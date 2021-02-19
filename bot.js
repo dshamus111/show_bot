@@ -21,15 +21,17 @@ client.on('message', async message => {
     
         switch(message.content) {
             case '&applaud':
+                console.log('Playing applause')
                 connection.play(path.join(__dirname, './sounds/applause.mp3'));
-
                 break;
 
             case '&boo':
+                console.log('Playing boo')
                 connection.play(path.join(__dirname, './sounds/boohiss.mp3'));
                 break;
 
             case '&laugh':
+                console.log('Playing laughter')
                 connection.play(path.join(__dirname, './sounds/laughter.mp3'));
                 break;
 
