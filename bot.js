@@ -1,9 +1,7 @@
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 const path = require('path');
 const { CommandoClient } = require('discord.js-commando');
-const { Client } = require('discord.js');
 
-// const client = new Client();
 const client = new CommandoClient({
     commandPrefix: '&',
     owner: '141354842273742848'
@@ -22,7 +20,7 @@ client.registry
 
 client.once('ready', () => {
     console.log(`Logged in as ${client.user.tag}! (${client.user.id})`)
-    client.user.setActivity('in their seats.')
+    client.user.setActivity('preparing.')
 });
 
 client.on('error', console.error);
