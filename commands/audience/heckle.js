@@ -6,7 +6,7 @@ module.exports = class ApplaudCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'heckle',
-            group: 'responses',
+            group: 'audience',
             memberName: 'heckle',
             description: 'Audience heckles in the channel.',
             guildOnly: true,

@@ -12,7 +12,8 @@ const client = new CommandoClient({
 client.registry
     .registerDefaultTypes()
     .registerGroups([
-        'responses', 'response commands',
+        'audience', 'audience commands',
+        'themes', 'theme commands',
         'utils', 'utility commands'
     ])
     .registerDefaultGroups()

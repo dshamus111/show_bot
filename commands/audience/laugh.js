@@ -1,14 +1,13 @@
 const { Command } = require('discord.js-commando');
 const path = require('path');
 
-module.exports = class ApplaudCommand extends Command {
+module.exports = class LaughCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'cricket',
-            aliases: ['silence', 'silent', 'crickets'],
-            group: 'responses',
-            memberName: 'cricket',
-            description: 'Audience goes silent in the channel.',
+            name: 'laugh',
+            group: 'audience',
+            memberName: 'laugh',
+            description: 'Audience laughs in the channel.',
             guildOnly: true,
             clientPermissions: ['SPEAK', 'CONNECT']
         });
@@ -17,7 +16,7 @@ module.exports = class ApplaudCommand extends Command {
     async run(message) {
         const voiceChannel = message.member.voice.channel;
         if (!voiceChannel) return message.say('You must join a channel first.');
-        message.member.voice.channel.join().then(connection => connection.play(path.join(__dirname, 'sounds/crickets.mp3')));
+        message.member.voice.channel.join().then(connection => connection.play(path.join(__dirname, 'sounds/laughter.mp3')));
         
     }
 }
