@@ -5,6 +5,7 @@ module.exports = class ApplaudCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'applaud',
+            aliases: ['clap'],
             group: 'audience',
             memberName: 'applaud',
             description: 'Audience applauds in the channel.',

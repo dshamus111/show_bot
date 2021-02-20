@@ -1,9 +1,10 @@
-require('dotenv').config();
+// require('dotenv').config();
+const config = require('./config.json');
 const path = require('path');
 const { CommandoClient } = require('discord.js-commando');
 
 const client = new CommandoClient({
-    commandPrefix: '&',
+    commandPrefix: config.prefix,
     owner: '141354842273742848'
 });
 
@@ -25,4 +26,25 @@ client.once('ready', () => {
 
 client.on('error', console.error);
 
-client.login(process.env.DISCORDJS_BOT_TOKEN);
+client.on('voiceStateUpdate', (oldState, newState) => {
+
+    if(!config.audience_intro) {
+        return;
+    }
+
+    const old_channel = oldState.channelID;
+    const new_channel = newState.channelID;
+    const isBot = newState.member.user.bot;
+
+    // User has joined the voice chat
+    if (old_channel === null && new_channel !== null) {
+        if (!isBot) {
+            newState.channel.join()
+                .then(conncection => {
+                    setTimeout(() => conncection.play(path.join(__dirname, 'commands/audience/sounds/applause.mp3')), 250);
+                });
+        }
+    }
+})
+
+client.login(config.token);
