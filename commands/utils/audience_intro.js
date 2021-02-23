@@ -8,13 +8,15 @@ module.exports = class ToggleIntroCommand extends Command {
             name: 'toggleintro',
             aliases: ['togglei'],
             group: 'utils',
-            memberName: 'togglei&helpntro',
+            memberName: 'togglei',
             description: `Toggle if audience applauds when user joins. Currently set to ${config.audience_intro}`,
         });
     }
 
     run(message) {
         config.audience_intro = !config.audience_intro;
-        message.say(`Audience introduction has been set to ${config.audience_intro}`);
+        message.say(
+            `Audience introduction has been set to ${config.audience_intro}`
+        );
     }
-}
+};
